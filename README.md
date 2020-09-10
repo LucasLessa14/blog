@@ -1,18 +1,18 @@
 # Sistema de blog com página admin
 
-**Version 1.0.0** - [Change log](CHANGELOG.md)
+**Version 0.1.0** - [Change log](CHANGELOG.md)
 
 Projeto desenvolvido para fins de aprendizado
 
 ## Pré-requisitos
 - docker
-- docker-compose
+- nodejs
 
 ## Tutorial
 
-Subir os containers
+Criar database em container docker
 ```
-docker-compose up -d
+docker run -e POSTGRES_PASSWORD=docker -e POSTGRES_USER=docker -e POSTGRES_DB=blog -p 5432:5432 -d postgres:12
 ```
 ## Author
 - Lucas Lessa
