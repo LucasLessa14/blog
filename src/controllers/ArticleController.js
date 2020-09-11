@@ -23,12 +23,35 @@ class ArticleController {
             var result = await Articles.new(title, body);
 
             if (result.status) {
-                res.json({info: 'Artigo criado'});
+                res.status(201).json({info: 'Artigo criado'});
                 return;
             } else {
                 res.status(406).json({error: result.error});
                 return;
             }
+        }
+    }
+
+    async edit(req, res) {
+        const { id, title, body } = req.body;
+        var result = await Articles.update(id, title, body);
+
+        if (result.status) {
+            res.send(result);
+        } else {
+            res.status(406).json({ error: result.error});
+        }
+    }
+
+    async remove(req, res) {
+        var id = req.params.id;
+
+        var result = await Articles.delete(id);
+
+        if (result.status) {
+            res.send(result);
+        } else {
+            res.status(406).json(result.err);
         }
     }
 }

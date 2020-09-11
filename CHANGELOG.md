@@ -1,12 +1,14 @@
 # Change log
 
-## v0.3.0 - Sep. 10, 2020
+## v1.0.0 - Sep. 10, 2020
 
 Articles CRUD
 
 **News features:**
 - Find All Articles
 - Create a new Article
+- Update Article
+- Delete Article
 
 **Added:**
 - src/models/Articles.js
