@@ -8,10 +8,10 @@ module.exports = function(req, res, next) {
        var token = bearer[1];
 
        try {
-           var decoded = jwt.verify(token, process.env.JWT_SECRET);
+            var decoded = jwt.verify(token, process.env.JWT_SECRET);
            
             if (decoded.role == 1) {
-               next()
+                next()
             } else {
                 res.status(403).send('Você não tem permissão admin');
                 return;
