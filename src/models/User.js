@@ -1,4 +1,5 @@
 const knex = require('../database');
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 class User {
@@ -14,7 +15,7 @@ class User {
 
     async findById(id) {
         try {
-            var result = await knex('users').select(['id', 'email', 'username']).where({ id });
+            var result = await knex('users').select(['id', 'email', 'username', 'role']).where({ id });
 
             // Garante que a função retorna um único valor
             if (result.length > 0) {
@@ -24,6 +25,21 @@ class User {
             } 
         } catch (error) {
             console.log(error);
+            return undefined;
+        }
+    }
+
+    async findByEmail(email) {
+        try {
+            var result = await knex('users').select(['id', 'email', 'password', 'username', 'role']).where({ email });
+
+            if (result.length > 0) {
+                return result[0];
+            } else {
+                return undefined
+            }
+        } catch (err) {
+            console.log(err);
             return undefined;
         }
     }
@@ -45,12 +61,13 @@ class User {
 
     async new(email, password, username) {
         try {
-            var hash = await bcrypt.hash(password,8);
+            var hash = await bcrypt.hash(password, parseInt(process.env.HASH_SALTROUNDS));
 
-            await knex('users').insert({ email, password: hash, username });
+            await knex('users').insert({ email, password: hash, username, role: 0 });
             
             return { status: true }
         } catch (error) {
+            console.log(error)
             return { status: false, error };
         }
     }
@@ -82,7 +99,7 @@ class User {
                 editUser.role = role;
 
             try {
-                await knex.update(editUser).where({ id: id }).table('users');
+                await knex.update(editUser).where({ id }).table('users');
                 return {status: true};
             } catch (err) {
                 console.log(err);
@@ -109,6 +126,24 @@ class User {
             }
         } else {
             return { status: false, err: 'Usuário não existe, portanto não foi deletado' };
+        }
+    }
+
+    async authenticate(email, password) {
+        var user = await this.findByEmail(email);
+
+        if(user != undefined) {
+
+            var result = await bcrypt.compare(password, user.password);
+        
+            if (result) {
+                var token = jwt.sign({ email: user.email, role: user.role }, process.env.JWT_SECRET);
+                return { status: true, token };
+            } else {
+                return { status: false, err: 'Senha incorreta' };
+            }
+        } else {
+            return { status: false, err: 'Usuário não existe!' };
         }
     }
 }

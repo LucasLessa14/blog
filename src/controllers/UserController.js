@@ -21,8 +21,12 @@ class UserController {
             return;
         }
 
-        await User.new(email, password, username);
-        res.status(201).send("Usuário criado com sucesso");
+        try {
+            await User.new(email, password, username);
+            res.status(201).send("Usuário criado com sucesso");
+        } catch (err) {
+            res.status(400).json({ err });
+        }
     }
 
     async edit(req, res) {
@@ -49,11 +53,21 @@ class UserController {
         var result = await User.delete(id);
 
         if (result.status) {
-            res.status(200);
             res.send('Tudo OK!');
         } else {
-            res.status(406);
-            res.json(result.err);
+            res.status(406).json(result.err);
+        }
+    }
+
+    async login (req, res) {
+        var { email, password } = req.body;
+
+        var result = await User.authenticate(email, password);
+
+        if (result.status) {
+            res.json({ token: result.token });
+        } else {
+            res.status(406).json({ status: false, err: result.err });
         }
     }
 }
