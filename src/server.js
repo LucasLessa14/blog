@@ -1,12 +1,11 @@
 require('dotenv/config');
 
 const express = require('express');
-const knex = require('./database');
+const routes = require('./routes');
+
 const app = express();
 
-app.get('/', async (req,res) => {
-    const results = await knex('articles');
-    res.json(results);
-});
+app.use(express.json());
+app.use('/', routes);
 
 app.listen(process.env.PORT || 3001);
