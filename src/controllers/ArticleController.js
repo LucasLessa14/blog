@@ -1,4 +1,4 @@
-const Articles = require('../models/Articles');
+const Articles = require('../models/Article');
 
 class ArticleController {
     async index(req, res) {

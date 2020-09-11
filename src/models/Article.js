@@ -1,6 +1,5 @@
 const knex = require('../database');
 const slugify = require("slugify");
-const { edit } = require('../controllers/ArticleController');
 
 class Article {
     async findAll() {

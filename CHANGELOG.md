@@ -1,6 +1,24 @@
 # Change log
 
-## v1.0.0 - Sep. 10, 2020
+## v1.1.0 - Sep. 11, 2020
+
+USER CRUD
+Authenticate JWT
+Middleware auth.js, notFound and internalError
+
+**News features:**
+- Find All Users
+- Create a new User
+- Update User
+- Delete User
+- Recover password
+- src/middlewares/auth.js
+
+**Added:**
+- src/models/Articles.js
+- src/controllers/ArticlesController.js
+
+## v1.0.0 - Sep. 11, 2020
 
 Articles CRUD
 
