@@ -1,5 +1,17 @@
 # Change log
 
+## v0.3.0 - Sep. 10, 2020
+
+Articles CRUD
+
+**News features:**
+- Find All Articles
+- Create a new Article
+
+**Added:**
+- src/models/Articles.js
+- src/controllers/ArticlesController.js
+
 ## v0.2.0 - Sep. 10, 2020
 
 Connection with database (postgres)
@@ -13,7 +25,7 @@ Connection with database (postgres)
 
 ## v0.1.0 - Sep. 10, 2020
 
-Initial release.
+Initial release
 
 **News features:**
 - Hello World
