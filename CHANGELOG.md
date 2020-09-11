@@ -1,5 +1,14 @@
 # Change log
 
+## v1.2.0 - Sep. 11, 2020
+
+Updated_at SQL function
+
+**News features:**
+- Update SQL function
+- Deleted_at for User
+- Knex seed - quick start
+
 ## v1.1.0 - Sep. 11, 2020
 
 USER CRUD
@@ -15,8 +24,8 @@ Middleware auth.js, notFound and internalError
 - src/middlewares/auth.js
 
 **Added:**
-- src/models/Articles.js
-- src/controllers/ArticlesController.js
+- src/models/User.js
+- src/controllers/UserController.js
 
 ## v1.0.0 - Sep. 11, 2020
 
@@ -29,15 +38,15 @@ Articles CRUD
 - Delete Article
 
 **Added:**
-- src/models/Articles.js
-- src/controllers/ArticlesController.js
+- src/models/Article.js
+- src/controllers/ArticleController.js
 
 ## v0.2.0 - Sep. 10, 2020
 
 Connection with database (postgres)
 
 **News features:**
-- Dataabase connection
+- Database connection
 
 **Added:**
 - [LICENSE.md](LICENSE.md)

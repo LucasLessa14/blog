@@ -76,11 +76,6 @@ class Article {
     
             // Atualiza a descrição
             if (body != undefined) editArticle.body = body;
-
-            // Faz o update
-            if (editArticle != {}) {
-                return { status: false, error: 'Tá trollando, bro?' }
-            }
             
             try {
                 await knex('articles').update(editArticle).where({ id });

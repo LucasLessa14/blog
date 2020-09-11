@@ -112,13 +112,15 @@ class User {
     }
 
     async delete(id) {
-        
         var user = await this.findById(id);
 
         if(user != undefined) {
 
             try {
-                await knex.delete().where({ id: id }).table('users');
+                await knex('users')
+                .where({ id })
+                .update('deleted_at', new Date());
+                
                 return { status: true };
             } catch (err) {
                 console.log(err);
