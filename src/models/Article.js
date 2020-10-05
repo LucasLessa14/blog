@@ -4,7 +4,7 @@ const slugify = require("slugify");
 class Article {
     async findAll() {
         try {
-            var results = await knex('articles').select(['id', 'title', 'slug'])
+            var results = await knex('articles').select(['id', 'title', 'slug', 'created_at'])
             return { status: true, results: results };
         } catch (error) {
             console.log(error);
@@ -15,6 +15,22 @@ class Article {
     async findById(id) {
         try {
             var result = await knex('articles').select().where({ id });
+
+            // Garante que a função retorna um único valor
+            if (result.length > 0) {
+                return result[0]
+            }else {
+                return undefined;
+            } 
+        } catch (error) {
+            console.log(error);
+            return undefined;
+        }
+    }
+
+    async findBySlug(slug) {
+        try {
+            var result = await knex('articles').select().where({ slug });
 
             // Garante que a função retorna um único valor
             if (result.length > 0) {

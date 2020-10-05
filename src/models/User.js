@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 class User {
     async findAll() {
         try {
-            var results = await knex('users').select(['id', 'username', 'email'])
+            var results = await knex('users').select(['id', 'username', 'email']).where({ deleted_at: null });
             return { status: true, results: results };
         } catch (error) {
             console.log(error);
@@ -63,7 +63,7 @@ class User {
         try {
             var hash = await bcrypt.hash(password, parseInt(process.env.HASH_SALTROUNDS));
 
-            await knex('users').insert({ email, password: hash, username, role: 0 });
+            await knex('users').insert({ email, password: hash, username, role: 1 });
             
             return { status: true }
         } catch (error) {
@@ -120,7 +120,7 @@ class User {
                 await knex('users')
                 .where({ id })
                 .update('deleted_at', new Date());
-                
+
                 return { status: true };
             } catch (err) {
                 console.log(err);

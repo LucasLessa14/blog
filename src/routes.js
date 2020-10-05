@@ -6,6 +6,8 @@ const UserController = require('./controllers/UserController')
 routes
     // CRUD - Articles
     .get('/articles', ArticleController.index)
+    .get('/articles/:id', ArticleController.getArticleById)
+    .get('/articles/slug/:slug', ArticleController.getArticleBySlug)
     .post('/articles', AdminAuth, ArticleController.create)
     .put('/articles', AdminAuth, ArticleController.edit)
     .delete('/articles/:id', AdminAuth, ArticleController.remove)
@@ -15,6 +17,7 @@ routes
     .put('/users', UserController.edit)
     .delete('/users/:id', UserController.remove)
     // Authenticate - Users
-    .post('/login', UserController.login);
+    .post('/login', UserController.login)
+    .post('/validate', AdminAuth, UserController.validate);
 
 module.exports = routes;

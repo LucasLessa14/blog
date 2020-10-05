@@ -1,6 +1,10 @@
 const User = require('../models/User');
 
 class UserController {
+    async validate(req, res) {
+        res.send('ok!');
+    }
+    
     async index(req, res) {
         const users = await User.findAll();
         return res.json(users);

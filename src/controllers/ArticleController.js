@@ -6,6 +6,18 @@ class ArticleController {
         return res.json(articles);
     }
 
+    async getArticleById(req, res) {
+        const id = req.params.id;
+        const article = await Articles.findById(id);
+        return res.json(article);
+    }
+
+    async getArticleBySlug(req, res) {
+        const slug = req.params.slug;
+        const article = await Articles.findBySlug(slug);
+        return res.json(article);
+    }
+
     async create(req, res) {
         const { title, body } = req.body;
 
