@@ -23,4 +23,6 @@ app.use((error, req, res, next) => {
     res.json({ error: error.message });
 })
 
-app.listen(process.env.PORT || 3001);
+app.listen(process.env.PORT || 3001, () => {
+    console.log("server rodando!!");
+});
