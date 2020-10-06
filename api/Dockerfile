@@ -17,13 +17,3 @@ ENTRYPOINT ["sh", "init.sh"]
 EXPOSE 3001
 
 CMD [ "./init.sh" ]
-
-# RUN ls -la
-# ENTRYPOINT ["/home/node/app/init.sh"] 
-# RUN chmod +x ./init.sh
-
-# RUN ["chmod", "+x", "/home/node/app/init.sh"]
-# RUN chmod +x init.sh
-# RUN ls -la
-# RUN npx knex migrate:latest
-# RUN npx knex seed:run

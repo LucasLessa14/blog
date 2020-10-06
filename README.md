@@ -1,24 +1,21 @@
 # Sistema de blog com página admin
 
-**Version 1.2.0** - [Change log](CHANGELOG.md)
+**Version 2.0.0** - [Change log](CHANGELOG.md)
 
 Projeto desenvolvido para fins de aprendizado
 
 ## Pré-requisitos
 - docker
-- nodejs
+- docker-compose
 
 ## Quick start
-Criar database em container docker
-```
-docker run -e POSTGRES_PASSWORD=docker -e POSTGRES_USER=docker -e POSTGRES_DB=blog -p 5432:5432 -d postgres:12
-```
+Essa aplicação usar docker. O ambiente é criado e configurado de forma automática, desde que você tenha `docker` e `docker-compose` instalado em sua máquina.
+
 Inicializando a API
 ```
-npm install
-npx knex migrate:latest
-npx knex seed:run
-npm run start
+docker-compose build
+docker-compose up
 ```
+
 ## Author
 - Lucas Lessa

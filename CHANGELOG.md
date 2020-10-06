@@ -1,5 +1,20 @@
 # Change log
 
+## v2.0.0 - Sep. 11, 2020
+
+Docker-compose implemented
+
+**News features:**
+- Postgres implemented
+- API dockerized
+
+**Added:**
+- api/
+- api/init.sh
+- api/Dockerfile
+- api/.dockerignore
+- docker-compose.yml
+
 ## v1.2.0 - Sep. 11, 2020
 
 Updated_at SQL function
