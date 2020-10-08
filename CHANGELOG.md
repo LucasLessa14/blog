@@ -1,6 +1,18 @@
 # Change log
 
-## v2.0.0 - Sep. 11, 2020
+## v2.1.0 - Out. 8, 2020
+
+Articles CRUD
+
+**News features:**
+- Find Article by slug
+- Find Category by slug
+- Get Categories
+
+**Added:**
+- api/src/models/Category.js
+- api/src/controllers/CategoryController.js
+## v2.0.0 - Out. 7, 2020
 
 Docker-compose implemented
 

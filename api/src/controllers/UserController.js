@@ -74,6 +74,34 @@ class UserController {
             res.status(406).json({ status: false, err: result.err });
         }
     }
+
+    // async changePassword(req, res) {
+    //     var { token, password } = req.body;
+
+    //     var isTokenValid = await PasswordToken.validate(token);
+    
+    //     if (isTokenValid.status) {
+
+    //         await User.changePassword(password, isTokenValid.token.user_id, isTokenValid.token.token)
+    //         res.send('Senha alterada com sucesso');
+    //     } else {
+    //         res.status(406).json({err: 'Token inválido!'});
+    //     }
+    // }
+
+    // async recoverPassword(req,res) {
+    //     var email = req.body.email;
+
+    //     var result = await PasswordToken.create(email);
+
+    //     if (result.status) {
+    //         res.status(200);
+    //         res.send("" + result.token);
+    //     } else {
+    //         res.status(406)
+    //         res.send(result.err);
+    //     }
+    // }
 }
 
 module.exports = new UserController();
