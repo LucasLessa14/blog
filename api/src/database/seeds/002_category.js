@@ -1,4 +1,3 @@
-
 exports.seed = knex => 
   knex('categories').del()
     .then(() => knex('categories').insert([
